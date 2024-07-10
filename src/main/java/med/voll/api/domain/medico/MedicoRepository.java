@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 
-
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
     Page<Medico> findAllByAtivoTrue(Pageable paginacao);
 
@@ -17,6 +16,6 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
            "ORDER BY RAND() LIMIT 1")
     Medico escolherMedicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data);
 
-    @Query("SELECT m.ativo FROM Medico m WHERE m.id = :id")
+    @Query("SELECT m.ativo FROM Medico m WHERE m.id = :idMedico")
     Boolean findAtivoById(Long idMedico);
 }

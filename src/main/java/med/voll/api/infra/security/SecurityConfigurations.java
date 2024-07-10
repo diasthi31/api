@@ -26,7 +26,7 @@ public class SecurityConfigurations {
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/login").permitAll(); //DIZ QUE SEMPRE QUE HOUVER UMA REQUISIÇÃO COM ESSE MAPEAMENTO, DEVE ACEITAR SEM VERIFICAR TOKEN
+                    req.requestMatchers("/login", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs").permitAll(); //DIZ QUE SEMPRE QUE HOUVER UMA REQUISIÇÃO COM ESSE MAPEAMENTO, DEVE ACEITAR SEM VERIFICAR TOKEN
                     req.anyRequest().authenticated(); //QUALQUER OUTRA REQUISIÇÃO, DEVE SER AUTENTICADA
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // CHAMA O FILTRO DE AUTENTICAÇÃO QUE EU CRIEI ANTES DO FILTRO DO SPING
