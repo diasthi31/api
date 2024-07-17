@@ -35,4 +35,7 @@ public class Paciente {
         this.telefone = dados.telefone();
         this.endereco = new Endereco(dados.endereco());
     }
+
+    public Paciente(String nome, String email, String number, String cpf, Endereco endereco) {
+    }
 }
